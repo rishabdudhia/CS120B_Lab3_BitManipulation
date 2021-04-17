@@ -14,7 +14,7 @@
 # An example set of tests is shown below. It is important to note that these tests are not "unit tests" in 
 # that they are not ran in isolation but in the order shown and the state of the device is not reset or 
 # altered in between executions (unless preconditions are used).
-tests = [ {'description': 'PORTA: 0x00 => PORTC: 0x40',
+tests = [ {'description': 'PORTA: 0x30 => PORTC: 0xD0',
     'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 1 }],
         #{'inputs': [('PINB',0x00)], 'iterations': 1} ],
     'expected': [('PORTC',0x40)],
@@ -24,7 +24,7 @@ tests = [ {'description': 'PORTA: 0x00 => PORTC: 0x40',
     #    {'inputs': [('PINB',0xFF)], 'iterations': 1}],
     'expected': [('PORTC', 0x3F)],
     },
-    {'description': 'PORTA: 0x31 => PORTC: 0x60',
+    {'description': 'PORTA: 0x71 => PORTC: 0x60',
     'steps': [{'inputs': [('PINA', 0xCD)], 'iterations': 1}],
         #{'inputs': [('PINB',0x27)], 'iterations': 1}],
     'expected': [('PORTC', 0x3F)],
@@ -34,7 +34,7 @@ tests = [ {'description': 'PORTA: 0x00 => PORTC: 0x40',
         #{'inputs': [('PINB',0x87)], 'iterations': 1}],
     'expected': [('PORTC', 0x70)],
     },
-    {'description': 'PORTA: 0x56 => PORTC: 0x38',
+    {'description': 'PORTA: 0x36 => PORTC: 0xB8',
     'steps': [{'inputs': [('PINA', 0x56)], 'iterations': 1}],
         #{'inputs': [('PINB',0x07)], 'iterations': 1}],
     'expected': [('PORTC', 0x38)],
@@ -54,4 +54,4 @@ tests = [ {'description': 'PORTA: 0x00 => PORTC: 0x40',
 # Optionally you can add a set of "watch" variables these need to be global or static and may need
 # to be scoped at the function level (for static variables) if there are naming conflicts. The 
 # variables listed here will display everytime you hit (and stop at) a breakpoint
-#watch = ['main::count']
+watch = ['main::count','main::check', 'main::currBit']
