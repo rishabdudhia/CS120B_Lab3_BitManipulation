@@ -14,34 +14,26 @@
 # An example set of tests is shown below. It is important to note that these tests are not "unit tests" in 
 # that they are not ran in isolation but in the order shown and the state of the device is not reset or 
 # altered in between executions (unless preconditions are used).
-tests = [ {'description': 'PORTA: 0x30 =>PORTB: 0x03 PORTC: 0x00',
-    'steps': [ {'inputs': [('PINA',0x30)], 'iterations': 1 }],
-        #{'inputs': [('PINB',0x00)], 'iterations': 1} ],
-    'expected': [('PORTB',0x03),('PORTC',0x00)],
-    },
-    {'description': 'PORTA: 0xFF =>PORTB: 0x0F PORTC: 0xF0',
-    'steps': [{'inputs': [('PINA', 0xFF)], 'iterations': 1}],
-    #    {'inputs': [('PINB',0xFF)], 'iterations': 1}],
-    'expected': [('PORTB',0x0F),('PORTC', 0xF0)],
-    },
-    {'description': 'PORTA: 0x98 =>PORTB: 0x09 PORTC: 0x80',
-    'steps': [{'inputs': [('PINA', 0x98)], 'iterations': 1}],
-    #    {'inputs': [('PINB',0xFF)], 'iterations': 1}],
-    'expected': [('PORTB',0x09),('PORTC', 0x80)],
-    },
-    {'description': 'PORTA: 0x00 =>PORTB: 0x00 PORTC: 0x00',
-    'steps': [{'inputs': [('PINA', 0x00)], 'iterations': 1}],
-    #    {'inputs': [('PINB',0xFF)], 'iterations': 1}],
-    'expected': [('PORTB',0x00),('PORTC', 0x00)],
-    },
-    {'description': 'PORTA: 0xA4 =>PORTB: 0x0A PORTC: 0x40',
-    'steps': [{'inputs': [('PINA', 0xA4)], 'iterations': 1}],
-    #    {'inputs': [('PINB',0xFF)], 'iterations': 1}],
-    'expected': [('PORTB',0x0A),('PORTC', 0x40)],
-    },
-    ]
 
-# Optionally you can add a set of "watch" variables these need to be global or static and may need
+#PINA values below are the values after the negation of PINA (when testing I removed the negation on PINA in my .c file)
+
+tests = [
+        {'description': 'PINA: 0x00 => PORTC: 0x40',
+        'steps': [{'inputs': [('PINA', 0x00)], 'iterations': 5}],
+        'expected': [('PORTC', 0x40)]},
+        {'description': 'PINA: 0x47 => PORTC: 0x3C',
+        'steps': [{'inputs': [('PINA', 0x47)], 'iterations': 5}],
+        'expected': [('PORTC', 0x3C)]},
+        {'description': 'PINA: 0x3D => PORTC: 0xBF',
+        'steps': [{'inputs': [('PINA', 0x3D)], 'iterations': 5}],
+        'expected': [('PORTC', 0xBF)]},
+        {'description': 'PINA: 0xF2 => PORTC: 0x60',
+        'steps': [{'inputs': [('PINA', 0xF2)], 'iterations': 5}],
+        'expected': [('PORTC', 0x60)]},
+        ]
+
+
+#Optionally you can add a set of "watch" variables these need to be global or static and may need
 # to be scoped at the function level (for static variables) if there are naming conflicts. The 
 # variables listed here will display everytime you hit (and stop at) a breakpoint
-watch = ['main::toB','main::toC']
+#watch = ['state','cntA0','cntA1','Tick::actualC']

@@ -15,23 +15,56 @@
 int main(void) {
     /* Insert DDR and PORT initializations */
     DDRA = 0x00; PORTA = 0xFF;
-    DDRB = 0xFF; PORTB = 0x00;
+    //DDRB = 0x00; PORTB = 0xFF;
     DDRC = 0xFF; PORTC = 0x00;
-    //unsigned char count = 0x00;
-    //unsigned char currBit = 0x00;
-    //unsigned char check = 0x00;
+    unsigned char count = 0x00;
+    unsigned char currBit = 0x00;
+    unsigned char check = 0x00;
     //unsigned char i;
-    unsigned char toB = 0x00;
-    unsigned char toC = 0x00;
     /* Insert your solution below */
     while (1) {
-	toB = PINA & 0xF0;
-	toB = toB >> 4;
-	PORTB = toB;
+	count = 0x00;
+	check = 0x00;
+	currBit = 0x00;
+	count = PINA & 0x0F;
+	check = PINA & 0x70;
 
-	toC = PINA & 0x0F;
-	toC = toC << 4;
-	PORTC = toC;
+	if (count >= 0x01)
+	{
+	    currBit = currBit | 0x20;
+	}
+	if (count >= 0x03)
+	{
+	    currBit = currBit | 0x10;
+	}
+	if (count >= 0x05)
+	{
+	    currBit = currBit | 0x08;
+	}
+	if (count >= 0x07)	
+	{
+	    currBit = currBit | 0x04;
+	}
+	if (count >= 0x0A)
+	{
+	    currBit = currBit | 0x02;
+	}
+	if (count >= 0x0D)
+	{
+	    currBit = currBit | 0x01;
+	}
+	
+	if (count <= 0x04)
+	{
+	    currBit = currBit | 0x40;
+	}
+
+	if (check == 0x30)
+	{
+	    currBit = currBit | 0x80;
+	}
+	
+	PORTC = currBit;
     }
     return 0;
 }
