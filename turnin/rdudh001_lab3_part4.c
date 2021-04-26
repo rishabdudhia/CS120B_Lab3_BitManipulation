@@ -1,7 +1,7 @@
 /*	Author:Rishab Dudhia - rdudh001
  *  Partner(s) Name: None
  *	Lab Section:022
- *	Assignment: Lab #3  Exercise #3
+ *	Assignment: Lab #3  Exercise #4
  *	Exercise Description: [optional - include for your own benefit]
  *      PA (input) reads fuel level; PC (output) 6 lights showing level of fuel; Added 7th to detect seatbelt
  *	I acknowledge all content contained herein, excluding template or example
